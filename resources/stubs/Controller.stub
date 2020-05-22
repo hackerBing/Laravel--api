@@ -1,0 +1,64 @@
+<?php
+
+namespace App\Http\Controllers\Home\{{modelName}};
+
+
+use App\Http\Controllers\HomeController;
+use Illuminate\Http\Request;
+
+use App\Http\Controllers\Home\{{modelName}}\{{modelName}};
+
+
+class {{modelName}}Controller extends HomeController
+{
+    public function index()
+    {
+        // 分页
+        ${{modelNamePluralLowerCase}} = {{modelName}}::simplePaginate(12);
+
+        return $this->success(${{modelNamePluralLowerCase}},900001);
+    }
+
+    public function store(Request $request)
+    {
+
+        $result = {{modelName}}Request::store($request->all());
+        if($result)
+        {
+            return $this->fail($result,500004);
+        }
+        ${{modelNameSingularLowerCase}} = {{modelName}}::create($request->all());
+
+        return $this->success(${{modelNameSingularLowerCase}},900002);
+    }
+
+    public function show($id)
+    {
+        ${{modelNameSingularLowerCase}} = {{modelName}}::find($id);
+        if(!${{modelNameSingularLowerCase}})
+        {
+            return $this->fail(${{modelNameSingularLowerCase}});
+        }
+
+        return $this->success(${{modelNameSingularLowerCase}},900001);
+    }
+
+    public function update(Request $request, $id)
+    {
+        ${{modelNameSingularLowerCase}} = {{modelName}}::find($id);
+        if(!${{modelNameSingularLowerCase}})
+        {
+            return $this->fail(${{modelNameSingularLowerCase}});
+        }
+        ${{modelNameSingularLowerCase}}->update($request->all());
+
+        return $this->success(${{modelNameSingularLowerCase}},900003);
+    }
+
+    public function destroy($id)
+    {
+        $result = {{modelName}}::destroy($id);
+
+        return $this->success($result,900004);
+    }
+}

@@ -1,0 +1,13 @@
+<?php
+
+namespace App\Http\Controllers\Api\{{modelName}};
+
+
+use Illuminate\Http\Request;
+
+use App\Http\Controllers\Api\{{modelName}}\{{modelName}};
+
+class {{modelName}}Controller extends Controller
+{
+
+}

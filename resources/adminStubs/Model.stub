@@ -1,0 +1,14 @@
+<?php
+
+
+namespace App\Http\Controllers\Api\{{modelName}};
+
+use Illuminate\Database\Eloquent\Model;
+
+class {{modelName}} extends Model
+{
+    protected $guarded = ['id'];
+
+    protected $table = '{{modelName}}';
+    
+}
